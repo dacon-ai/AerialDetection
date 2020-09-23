@@ -1,3 +1,5 @@
+# 이 저장소는 https://github.com/dingjiansw101/AerialDetection를 참고하여 작성하였습니다.
+
 
 # Benchmarks for Object Detection in Aerial Images
 
@@ -57,33 +59,25 @@ Please see [GETTING_STARTED.md](GETTING_STARTED.md) for the basic usage of mmdet
 We appreciate all contributions to improve benchmarks for object detection in aerial images. 
 
 
-## Citing
+## Reference
 
 If you use [DOTA](https://captain-whu.github.io/DOTA/) dataset, codebase or models in your research, please consider cite .
 
 ```
-@inproceedings{xia2018dota,
-  title={DOTA: A large-scale dataset for object detection in aerial images},
-  author={Xia, Gui-Song and Bai, Xiang and Ding, Jian and Zhu, Zhen and Belongie, Serge and Luo, Jiebo and Datcu, Mihai and Pelillo, Marcello and Zhang, Liangpei},
-  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
-  pages={3974--3983},
-  year={2018}
-}
+DOTA: A large-scale dataset for object detection in aerial images.
+Xia, Gui-Song and Bai, Xiang and Ding, Jian and Zhu, Zhen and Belongie, Serge and Luo, Jiebo and Datcu, Mihai and Pelillo, Marcello and Zhang, Liangpei
+```
 
-@article{chen2019mmdetection,
-  title={MMDetection: Open mmlab detection toolbox and benchmark},
-  author={Chen, Kai and Wang, Jiaqi and Pang, Jiangmiao and Cao, Yuhang and Xiong, Yu and Li, Xiaoxiao and Sun, Shuyang and Feng, Wansen and Liu, Ziwei and Xu, Jiarui and others},
-  journal={arXiv preprint arXiv:1906.07155},
-  year={2019}
-}
+```
+MMDetection: Open mmlab detection toolbox and benchmark.
+Chen, Kai and Wang, Jiaqi and Pang, Jiangmiao and Cao, Yuhang and Xiong, Yu and Li, Xiaoxiao and Sun, Shuyang and Feng, Wansen and Liu, Ziwei and Xu, Jiarui and others.
+arXiv preprint arXiv:1906.07155
+```
 
-@InProceedings{Ding_2019_CVPR,
-author = {Ding, Jian and Xue, Nan and Long, Yang and Xia, Gui-Song and Lu, Qikai},
-title = {Learning RoI Transformer for Oriented Object Detection in Aerial Images},
-booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-month = {June},
-year = {2019}
-}
+```
+Learning RoI Transformer for Oriented Object Detection in Aerial Images
+Ding, Jian and Xue, Nan and Long, Yang and Xia, Gui-Song and Lu, Qikai
+The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)
 ```
 
 ## Thanks to the Third Party Libs
