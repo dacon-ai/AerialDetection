@@ -144,11 +144,13 @@ def geojson2coco(imageroot: str, geojsonpath: str, destfile, difficult='-1'):
 
 if __name__ == '__main__':
 
-    rootfolder = '/path/to/NIA20A'
+    rootfolder = '/home/ubuntu/Dacon/cpt_data/SIA/official'
 
     geojson2coco(imageroot=os.path.join(rootfolder, 'train/images'),
                  geojsonpath=os.path.join(rootfolder, 'train/json'),
                  destfile=os.path.join(rootfolder, 'train/traincoco.json'))
+    '''
     geojson2coco(imageroot=os.path.join(rootfolder, 'test/images'),
                  geojsonpath=os.path.join(rootfolder, 'test/json'),
                  destfile=os.path.join(rootfolder, 'test/testcoco.json'))
+    '''
