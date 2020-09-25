@@ -1,15 +1,50 @@
-from .coco import CocoDataset
+from pycocotools.coco import COCO
 import numpy as np
 
-class NIA2020(CocoDataset):
+class NIA2020(CustomDataset):
 
     CLASSES = ('small ship', 'large ship', 'civilian aircraft', 'military aircraft', 'small car', 'bus', 'truck', 'train',
         'crane', 'bridge', 'oil tank', 'dam', 'athletic field', 'helipad', 'roundabout')
 
-class NIA2020Dataset_v3(CocoDataset):
+class NIA2020Dataset_v3(CustomDataset):
 
     CLASSES = ('small ship', 'large ship', 'civilian aircraft', 'military aircraft', 'small car', 'bus', 'truck', 'train',
         'crane', 'bridge', 'oil tank', 'dam', 'athletic field', 'helipad', 'roundabout')
+    
+    def load_annotations(self, ann_file):
+        ann_list = mmcv.list_from_file(ann_file)
+
+        data_infos = []
+        for i, ann_line in enumerate(ann_list):
+            if ann_line != '#':
+                continue
+
+            img_shape = ann_list[i + 2].split(' ')
+            width = int(img_shape[0])
+            height = int(img_shape[1])
+            bbox_number = int(ann_list[i + 3])
+
+            anns = ann_line.split(' ')
+            bboxes = []
+            labels = []
+            for anns in ann_list[i + 4:i + 4 + bbox_number]:
+                bboxes.append([float(ann) for ann in anns[:4]])
+                labels.append(int(anns[4]))
+
+            data_infos.append(
+                dict(
+                    filename=ann_list[i + 1],
+                    width=width,
+                    height=height,
+                    ann=dict(
+                        bboxes=np.array(bboxes).astype(np.float32),
+                        labels=np.array(labels).astype(np.int64))
+                ))
+
+        return data_infos
+
+    def get_ann_info(self, idx):
+        return self.data_infos[idx]['ann']    
     
     def _parse_ann_info(self, ann_info, with_mask=True):
         """Parse bbox and mask annotation.
@@ -34,8 +69,8 @@ class NIA2020Dataset_v3(CocoDataset):
             gt_mask_polys = []
             gt_poly_lens = []
         for i, ann in enumerate(ann_info):
-            if ann.get('ignore', False):
-                continue
+#             if ann.get('ignore', False):
+#                 continue
             x1, y1, w, h = ann['bbox']
             # This config verified
             # if ann['area'] <= 0 or w < 10 or h < 10:

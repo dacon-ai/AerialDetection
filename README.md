@@ -58,7 +58,7 @@ We appreciate all contributions to improve benchmarks for object detection in ae
 
 ## Reference
 
-이 저장소는 https://github.com/dingjiansw101/AerialDetection를 참고하여 작성하였습니다.
+이 저장소는 https://github.com/dingjiansw101/AerialDetection 참고하여 작성하였습니다.
 
 If you use [DOTA](https://captain-whu.github.io/DOTA/) dataset, codebase or models in your research, please consider cite .
 

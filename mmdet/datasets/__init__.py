@@ -13,7 +13,8 @@ from .DOTA2 import DOTA2Dataset_v2
 from .DOTA2 import DOTA2Dataset_v3, DOTA2Dataset_v4
 from .HRSC import HRSCL1Dataset
 from .DOTA1_5 import DOTA1_5Dataset, DOTA1_5Dataset_v3, DOTA1_5Dataset_v2
-from .ROKSI2020 import ROKSI2020, ROKSI2020Dataset_v3
+from .ROKSI2020 import ROKSI2020, ROKSI2020Dataset_v3x`
+from .repeat_dataset import RepeatDataset
 
 __all__ = [
     'CustomDataset', 'XMLDataset', 'CocoDataset', 'DOTADataset', 'DOTA2Dataset',
@@ -24,4 +25,5 @@ __all__ = [
     'DOTA1_5Dataset', 'DOTA1_5Dataset_v3', 'DOTA1_5Dataset_v2',
     'DOTA2Dataset_v4',
     'ROKSI2020', 'ROKSI2020Dataset_v3'
+    'RepeatDataset'
 ]

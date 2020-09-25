@@ -10,9 +10,9 @@ import numpy as np
 from PIL import Image
 
 NIA_CLASSES = ['배경', '소형 선박', '대형 선박', '민간 항공기', '군용 항공기', '소형 승용차', '버스', '트럭', '기차', '크레인', '다리', '정유탱크',
-               '댐', '운동경기장', '헬리패드', '원형 교차로']
+               '댐', '운동경기장', '헬리패드', '원형 교차로', '기타']
 CLASS_NAMES_EN = ('background', 'small ship', 'large ship', 'civilian aircraft', 'military aircraft', 'small car', 'bus', 'truck', 'train',
-        'crane', 'bridge', 'oil tank', 'dam', 'athletic field', 'helipad', 'roundabout')
+        'crane', 'bridge', 'oil tank', 'dam', 'athletic field', 'helipad', 'roundabout', 'etc')
 
 
 def convert_xywha_to_8coords(xywha, is_clockwise=False):
@@ -114,7 +114,7 @@ def geojson2coco(imageroot: str, geojsonpath: str, destfile, difficult='-1'):
     data_dict['images'] = []
     data_dict['categories'] = []
     data_dict['annotations'] = []
-    for idex, name in enumerate(CLASS_NAMES_EN):
+    for idex, name in enumerate(CLASS_NAMES_EN[1:]):
         single_cat = {'id': idex + 1, 'name': name, 'supercategory': name}
         data_dict['categories'].append(single_cat)
 
@@ -149,8 +149,11 @@ if __name__ == '__main__':
     geojson2coco(imageroot=os.path.join(rootfolder, 'train/images'),
                  geojsonpath=os.path.join(rootfolder, 'train/json'),
                  destfile=os.path.join(rootfolder, 'train/traincoco.json'))
-    '''
+    
     geojson2coco(imageroot=os.path.join(rootfolder, 'test/images'),
                  geojsonpath=os.path.join(rootfolder, 'test/json'),
                  destfile=os.path.join(rootfolder, 'test/testcoco.json'))
-    '''
+    
+    geojson2coco(imageroot=os.path.join(rootfolder, 'val/images'),
+                 geojsonpath=os.path.join(rootfolder, 'val/json'),
+                 destfile=os.path.join(rootfolder, 'val/valcoco.json'))    

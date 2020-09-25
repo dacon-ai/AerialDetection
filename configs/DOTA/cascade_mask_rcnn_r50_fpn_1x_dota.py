@@ -193,8 +193,12 @@ test_cfg = dict(
         mask_thr_binary=0.5),
     keep_all_stages=False)
 # dataset settings
-dataset_type = 'DOTADataset'
-data_root = 'data/dota1_1024/'
+dataset_type = 'CocoDataset'
+classes = ('background', 'small ship', 'large ship', 'civilian aircraft',
+           'military aircraft', 'small car', 'bus', 'truck', 'train', 'crane',
+           'bridge', 'oil tank', 'dam', 'athletic field', 'helipad',
+           'roundabout')
+data_root = '/home/ubuntu/Dacon/cpt_data/SIA/official/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 data = dict(
@@ -202,8 +206,8 @@ data = dict(
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        ann_file=data_root + 'trainval1024/DOTA_trainval1024.json',
-        img_prefix=data_root + 'trainval1024/images/',
+        ann_file=data_root + 'train/traincoco.json',
+        img_prefix=data_root + 'train/images/',
         img_scale=(1024, 1024),
         img_norm_cfg=img_norm_cfg,
         size_divisor=32,
@@ -213,28 +217,28 @@ data = dict(
         with_label=True),
     val=dict(
         type=dataset_type,
-        ann_file=data_root + 'trainval1024/DOTA_trainval1024.json',
-        img_prefix=data_root + 'trainval1024/images',
+        ann_file=data_root + 'test/traincoco.json',
+        img_prefix=data_root + 'test/images/',
         img_scale=(1024, 1024),
         img_norm_cfg=img_norm_cfg,
         size_divisor=32,
         flip_ratio=0,
         with_mask=True,
         with_crowd=True,
-        with_label=True),
-    test=dict(
-        type=dataset_type,
-        ann_file=data_root + 'test1024/DOTA_test1024.json',
-        img_prefix=data_root + 'test1024/images',
-        img_scale=(1024, 1024),
-        img_norm_cfg=img_norm_cfg,
-        size_divisor=32,
-        flip_ratio=0,
-        with_mask=True,
-        with_label=False,
-        test_mode=True))
+        with_label=True))
+#     test=dict(
+#         type=dataset_type,
+#         ann_file=data_root + 'test1024/DOTA_test1024.json',
+#         img_prefix=data_root + 'test1024/images',
+#         img_scale=(1024, 1024),
+#         img_norm_cfg=img_norm_cfg,
+#         size_divisor=32,
+#         flip_ratio=0,
+#         with_mask=True,
+#         with_label=False,
+#         test_mode=True))
 # optimizer
-optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001)
+optimizer = dict(type='SGD', lr=0.0025, momentum=0.9, weight_decay=0.0001)
 optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 # learning policy
 lr_config = dict(

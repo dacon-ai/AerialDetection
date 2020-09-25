@@ -172,7 +172,7 @@ def _dist_train(model, dataset, cfg, validate=False, **kwargs):
             cfg.data.imgs_per_gpu,
             cfg.data.workers_per_gpu,
             dist=True,
-            repeat_samples=cfg.train_cfg.repeat_samples,
+            #repeat_samples=cfg.train_cfg.repeat_samples,
             **kwargs)
     ]
     # put model on gpus
@@ -215,7 +215,7 @@ def _non_dist_train(model, dataset, cfg, validate=False, **kwargs):
             cfg.data.workers_per_gpu,
             cfg.gpus,
             dist=False,
-            repeat_samples=cfg.train_cfg.repeat_samples,
+            #repeat_samples=cfg.train_cfg.repeat_samples,
             **kwargs)
     ]
     # put model on gpus
