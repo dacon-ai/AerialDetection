@@ -10,9 +10,9 @@ import numpy as np
 from PIL import Image
 
 NIA_CLASSES = ['배경', '소형 선박', '대형 선박', '민간 항공기', '군용 항공기', '소형 승용차', '버스', '트럭', '기차', '크레인', '다리', '정유탱크',
-               '댐', '운동경기장', '헬리패드', '원형 교차로', '기타']
+               '댐', '운동경기장', '헬리패드', '원형 교차로']
 CLASS_NAMES_EN = ('background', 'small ship', 'large ship', 'civilian aircraft', 'military aircraft', 'small car', 'bus', 'truck', 'train',
-        'crane', 'bridge', 'oil tank', 'dam', 'athletic field', 'helipad', 'roundabout', 'etc')
+        'crane', 'bridge', 'oil tank', 'dam', 'athletic field', 'helipad', 'roundabout')
 
 
 def convert_xywha_to_8coords(xywha, is_clockwise=False):
@@ -151,7 +151,6 @@ if __name__ == '__main__':
                  destfile=os.path.join(rootfolder, 'train/traincoco.json'))
     
     geojson2coco(imageroot=os.path.join(rootfolder, 'test/images'),
-                 geojsonpath=os.path.join(rootfolder, 'test/json'),
                  destfile=os.path.join(rootfolder, 'test/testcoco.json'))
     
     geojson2coco(imageroot=os.path.join(rootfolder, 'val/images'),
